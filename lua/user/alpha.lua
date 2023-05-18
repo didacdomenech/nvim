@@ -46,8 +46,20 @@ function M.config()
     dashboard.button("c", " " .. " Config", ":e $MYVIMRC <CR>"),
     dashboard.button("q", " " .. " Quit", ":qa<CR>"),
   }
+
+  function os.capture(cmd, raw)
+    local f = assert(io.popen(cmd, 'r'))
+    local s = assert(f:read('*a'))
+    f:close()
+    if raw then return s end
+    s = string.gsub(s, '^%s+', '')
+    s = string.gsub(s, '%s+$', '')
+    s = string.gsub(s, '[\n\r]+', ' ')
+    return s
+  end
+
   local function footer()
-    return "chrisatmachine.com"
+    return "welcome back " .. os.capture("whoami")
   end
 
   dashboard.section.footer.val = footer()
