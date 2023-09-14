@@ -11,7 +11,7 @@ function M.config()
   local current_hour = tonumber(os.date("%H"))
 
   if current_hour >= 6 and current_hour < 18 then
-    FLAVOUR = "latte"
+    FLAVOUR = "mocha"
   else
     FLAVOUR = "mocha"
   end
