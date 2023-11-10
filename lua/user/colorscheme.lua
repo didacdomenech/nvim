@@ -49,31 +49,34 @@ local function detectDarkMode()
       return "Light"
     end
   elseif isWindows() then
-    -- This PowerShell command needs to be adjusted to properly detect dark mode in Windows
-    local handle = io.popen([[powershell -command "Get-AppxPackage -Name Microsoft.Windows.StartMenuExperienceHost"]])
-    local result = handle:read("*a")
+    -- Corrected single-line PowerShell command
+    local psScript = 'Get-ItemPropertyValue -Path "HKCU:\\Software\\Microsoft\\Windows\\CurrentVersion\\Themes\\Personalize" -Name "SystemUsesLightTheme" | ForEach-Object { if ($_ -eq 0) { Write-Output "Dark" } else { Write-Output "Light" } }'
+
+    -- Run the PowerShell command from Lua
+    local handle = io.popen('powershell -Command "' .. psScript .. '"', 'r')
+    local result = handle:read('*a')
     handle:close()
 
-    if result:match("Dark") then
+    -- Trim and process the result
+    result = result:gsub("%s+", "")
+    if result == "Dark" then
       return "Dark"
-    else
+    elseif result == "Light" then
       return "Light"
+    else
+      return "Error"
     end
-  else
-    return "Unknown"
   end
 end
 
-local theme = detectDarkMode()
-print("The current theme mode is:", theme)
-
 
 function M.config()
-    if theme:match("Dark") then
-      vim.cmd.colorscheme "catppuccin-mocha"
-    else
-      vim.cmd.colorscheme "catppuccin-latte"
-    end
+  local theme = detectDarkMode()
+  if theme:match("Dark") then
+  vim.cmd.colorscheme "catppuccin-mocha"
+  else
+    vim.cmd.colorscheme "catppuccin-latte"
+  end
 end
 
 return M
