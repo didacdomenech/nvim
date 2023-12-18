@@ -28,9 +28,13 @@ keymap("v", ">", ">gv", opts)
 
 keymap("x", "p", [["_dP]])
 
+-- Tab manipulation
+keymap("n", "<Tab>", "<cmd>:BufferNext<CR>", opts)
+keymap("n", "<S-Tab>", "<cmd>:BufferPrev<CR>", opts)
+
 vim.cmd [[:amenu 10.100 mousemenu.Goto\ Definition <cmd>lua vim.lsp.buf.definition()<CR>]]
 vim.cmd [[:amenu 10.110 mousemenu.References <cmd>lua vim.lsp.buf.references()<CR>]]
 -- vim.cmd [[:amenu 10.120 mousemenu.-sep- *]]
 
 vim.keymap.set("n", "<RightMouse>", "<cmd>:popup mousemenu<CR>")
-vim.keymap.set("n", "<Tab>", "<cmd>:popup mousemenu<CR>")
+-- vim.keymap.set("n", "<Tab>", "<cmd>:popup mousemenu<CR>")
