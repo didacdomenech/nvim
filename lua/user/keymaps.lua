@@ -38,3 +38,6 @@ vim.cmd [[:amenu 10.110 mousemenu.References <cmd>lua vim.lsp.buf.references()<C
 
 vim.keymap.set("n", "<RightMouse>", "<cmd>:popup mousemenu<CR>")
 -- vim.keymap.set("n", "<Tab>", "<cmd>:popup mousemenu<CR>")
+
+-- Telescope cmdline keybinding
+vim.api.nvim_set_keymap('n', '<leader><leader>', ':silent Telescope cmdline<CR>', { noremap = true, desc = "Cmdline" })

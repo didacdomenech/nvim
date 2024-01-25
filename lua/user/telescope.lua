@@ -1,9 +1,15 @@
 local M = {
   "nvim-telescope/telescope.nvim",
-  dependencies = { { "nvim-telescope/telescope-fzf-native.nvim", build = "make", lazy = true } },
+  dependencies = {
+    { "nvim-telescope/telescope-fzf-native.nvim", build = "make", lazy = true },
+    { "jonarrien/telescope-cmdline.nvim" }
+  },
   commit = "74ce793a60759e3db0d265174f137fb627430355",
   lazy = true,
   cmd = "Telescope",
+  keys = {
+    {'<leader><leader>', '<cmd>Telescope cmdline<cr>', desc = 'Cmdline'}
+  }
 }
 
 function M.config()
@@ -115,8 +121,19 @@ function M.config()
         override_file_sorter = true, -- override the file sorter
         case_mode = "smart_case", -- or "ignore_case" or "respect_case"
       },
+      cmdline = {
+        picker = {
+          layout_config = { width = 120, height = 25,}
+        },
+        mappings = {
+          complete = '<Tab>',
+          run_selection = '<C-CR>',
+          run_input = '<CR>',
+        },
+      },
     },
   }
+  require("telescope").load_extension("cmdline")
 end
 
 return M
