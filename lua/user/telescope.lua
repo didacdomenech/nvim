@@ -8,7 +8,8 @@ local M = {
   lazy = true,
   cmd = "Telescope",
   keys = {
-    {'<leader><leader>', '<cmd>Telescope cmdline<cr>', desc = 'Cmdline'}
+   -- Disabled as noice.vim works fine. Replace at your own risk :)
+   -- {'<leader><leader>', '<cmd>Telescope cmdline<cr>', desc = 'Cmdline'}
   }
 }
 

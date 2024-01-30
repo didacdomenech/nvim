@@ -135,6 +135,12 @@ function M.config()
       name = "Treesitter",
       i = { ":TSConfigInfo<cr>", "Info" },
     },
+    x = {
+      name = "Terminal",
+      x = { "<cmd>ToggleTerm<CR>", "New terminal (default)" },
+      h = { "<cmd>ToggleTerm direction=horizontal<CR>", "Horizontal terminal" },
+      v = { "<cmd>ToggleTerm direction=vertical<CR>", "Vertiacal terminal (Unusable for now)" },
+    },
   }
 
   local opts = {
