@@ -29,15 +29,20 @@ keymap("v", ">", ">gv", opts)
 keymap("x", "p", [["_dP]])
 
 -- Tab manipulation
-keymap("n", "<Tab>", "<cmd>:BufferNext<CR>", opts)
-keymap("n", "<S-Tab>", "<cmd>:BufferPrev<CR>", opts)
+keymap("n", "<S-Tab>", "<cmd>:BufferNext<CR>", opts)
+-- keymap("n", "<S-Tab>", "<cmd>:BufferPrev<CR>", opts)
 
 vim.cmd [[:amenu 10.100 mousemenu.Goto\ Definition <cmd>lua vim.lsp.buf.definition()<CR>]]
 vim.cmd [[:amenu 10.110 mousemenu.References <cmd>lua vim.lsp.buf.references()<CR>]]
 -- vim.cmd [[:amenu 10.120 mousemenu.-sep- *]]
 
-vim.keymap.set("n", "<RightMouse>", "<cmd>:popup mousemenu<CR>")
+keymap("n", "<RightMouse>", "<cmd>:popup mousemenu<CR>")
 -- vim.keymap.set("n", "<Tab>", "<cmd>:popup mousemenu<CR>")
 
 -- Telescope cmdline keybinding (optional)
 -- vim.api.nvim_set_keymap('n', '<leader><leader>', ':silent Telescope cmdline<CR>', { noremap = true, desc = "Cmdline" })
+
+-- Copilot:
+-- keymap("i", "<M-.>", "<Plug>(copilot-next)", { noremap = false })
+keymap("i", "<C-j>", "<Plug>(copilot-next)", { noremap = false } )
+keymap("i", "<C-k>", "<Plug>(copilot-prev)", { noremap = false } )
