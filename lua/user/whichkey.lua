@@ -13,6 +13,7 @@ function M.config()
     b = {
       name = "Buffers",
       b = { "<cmd>Telescope buffers previewer=false<cr>", "Find" },
+      x = { "<cmd>BufferClose<cr>", "Close buffer" },
     },
     d = {
       name = "Debug",
