@@ -7,7 +7,7 @@ Here it comes the first major version of my neovim configuration. Made possible 
 Now this config uses `lazy.nvim` as a plugin manager, so if you are migrating from packer you should probably remove
 `$HOME/.local/share/nvim` and re-open nvim to re-install the plugins to not face any issues.
 
-## Install Neovim 0.9
+## Install Neovim 0.10
 
 You can install Neovim with your package manager e.g. brew, apt, pacman etc.. but remember that when you update your packages Neovim may be upgraded to a newer version.
 
@@ -18,29 +18,31 @@ If you would like to make sure Neovim only updates when you want it to than I re
 ```sh
 git clone https://github.com/neovim/neovim.git
 cd neovim
-git checkout release-0.9
+git checkout release-0.10
 make CMAKE_BUILD_TYPE=Release
 sudo make install
 ```
 ## Dependencies
 - flake8
 - pynvim
-- prettier
 - ripgrep
+
+> Note: I recommend installing [lazygit](https://github.com/jesseduffield/lazygit) alongside neovim for a better development experience.
 
 ## Install the config
 
 Make sure to remove or backup your current `nvim` directory
 
 ```sh
-git clone https://github.com/LunarVim/nvim-basic-ide.git ~/.config/nvim
+git clone https://github.com/didacdomenech/nvim.git ~/.config/nvim
 ```
+
+> Note: Installation is different on Windows. Inside %APPDATA% you will find the `local` directory. Clone it there are you should good to go.
 
 Run `nvim` and wait for the plugins to be installed
 
-**NOTE** (You will notice treesitter pulling in a bunch of parsers the next time you open Neovim)
-
-**NOTE** Checkout this file for some predefined keymaps: [keymaps](https://github.com/LunarVim/nvim-basic-ide/tree/master/lua/keymaps.lua)
+> Note: (You will notice treesitter pulling in a bunch of parsers the next time you open Neovim)
+> Note: Checkout this file for some predefined keymaps: [keymaps](https://github.com/LunarVim/nvim-basic-ide/tree/master/lua/keymaps.lua)
 
 ## Get healthy
 
@@ -67,7 +69,7 @@ First we'll fix copy/paste
 
 Next we need to install python support (node is optional)
 
-- Neovim python support
+- Neovim python support (no longer required on some systems)
 
   ```sh
   pip install pynvim
@@ -89,11 +91,11 @@ We will also need `ripgrep` for Telescope to work:
 
 ---
 
-**NOTE** make sure you have [node](https://nodejs.org/en/) installed, I recommend a node manager like [fnm](https://github.com/Schniz/fnm).
+> Note: make sure you have [node](https://nodejs.org/en/) installed, I recommend a node manager like [fnm](https://github.com/Schniz/fnm).
 
 ## Fonts
 
-I recommend using the following repo to get a "Nerd Font" (Font that supports icons)
+I recommend using the following repo to get a "Nerd Font" (Font that supports icons). By default, my configuration uses JetBrains Nerd Font for GUIs like neovide. Change it in `lua/user/options.lua` to whatever you prefer.
 
 [getnf](https://github.com/ronniedroid/getnf)
 
@@ -139,52 +141,12 @@ M.servers = {
 
 Make sure the formatter or linter is installed and add it to this setup function: [null-ls](https://github.com/LunarVim/nvim-basic-ide/blob/e6b6c96280ca730a2564f2e36050df055acfb1a8/lua/user/null-ls.lua#L22)
 
-**NOTE** Some are already setup as examples, remove them if you want
+> Note: Some are already setup as examples, remove them if you want
 
 ### Plugins
 
 ### You can install new plugins here: [plugins](https://github.com/LunarVim/nvim-basic-ide/tree/master/lua/user)
 
-Heres the wiki for installing new plugins refer to this: [wiki](https://github.com/LunarVim/nvim-basic-ide/wiki/adding_new_plugins)
+Here is the wiki for installing new plugins refer to this: [wiki](https://github.com/LunarVim/nvim-basic-ide/wiki/adding_new_plugins)
 
-## Plugins
-
-- [lazy](https://github.com/folke/lazy.nvim)
-- [plenary](https://github.com/nvim-lua/plenary.nvim)
-- [nvim-autopairs](https://github.com/windwp/nvim-autopairs)
-- [Comment.nvim](https://github.com/numToStr/Comment.nvim)
-- [nvim-ts-context-commentstring](https://github.com/JoosepAlviste/nvim-ts-context-commentstring)
-- [nvim-web-devicons](https://github.com/nvim-tree/nvim-web-devicons)
-- [nvim-tree.lua](https://github.com/kyazdani42/nvim-tree.lua)
-- [bufferline.nvim](https://github.com/akinsho/bufferline.nvim)
-- [bufdelete.nvim](https://github.com/famiu/bufdelete.nvim)
-- [lualine.nvim](https://github.com/nvim-lualine/lualine.nvim)
-- [toggleterm.nvim](https://github.com/akinsho/toggleterm.nvim)
-- [project.nvim](https://github.com/ahmedkhalf/project.nvim)
-- [impatient.nvim](https://github.com/lewis6991/impatient.nvim)
-- [indent-blankline.nvim](https://github.com/lukas-reineke/indent-blankline.nvim)
-- [alpha-nvim](https://github.com/goolord/alpha-nvim)
-- [catppuccin.nvim](https://github.com/catppuccin/nvim)
-- [nvim-cmp](https://github.com/hrsh7th/nvim-cmp)
-- [cmp-buffer](https://github.com/hrsh7th/cmp-buffer)
-- [cmp-path](https://github.com/hrsh7th/cmp-path)
-- [cmp_luasnip](https://github.com/saadparwaiz1/cmp_luasnip)
-- [cmp-nvim-lsp](https://github.com/hrsh7th/cmp-nvim-lsp)
-- [cmp-nvim-lua](https://github.com/hrsh7th/cmp-nvim-lua)
-- [LuaSnip](https://github.com/L3MON4D3/LuaSnip)
-- [friendly-snippets](https://github.com/rafamadriz/friendly-snippets)
-- [mason.nvim](https://github.com/williamboman/mason.nvim)
-- [nvim-lspconfig](https://github.com/neovim/nvim-lspconfig)
-- [mason-lspconfig.nvim](https://github.com/williamboman/mason-lspconfig.nvim)
-- [null-ls.nvim](https://github.com/jose-elias-alvarez/null-ls.nvim)
-- [vim-illuminate](https://github.com/RRethy/vim-illuminate)
-- [telescope.nvim](https://github.com/nvim-telescope/telescope.nvim)
-- [nvim-treesitter](https://github.com/nvim-treesitter/nvim-treesitter)
-- [gitsigns.nvim](https://github.com/lewis6991/gitsigns.nvim)
-- [nvim-dap](https://github.com/mfussenegger/nvim-dap)
-- [nvim-dap-ui](https://github.com/rcarriga/nvim-dap-ui)
-- [DAPInstall.nvim](https://github.com/ravenxrz/DAPInstall.nvim)
-- [which-key.nvim](https://github.com/folke/which-key.nvim)
-
----
 
