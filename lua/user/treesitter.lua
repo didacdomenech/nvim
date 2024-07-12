@@ -27,8 +27,12 @@ local M = {
   },
 }
 function M.config()
+  require('ts_context_commentstring').setup {
+    enable_autocmd = true,
+    -- enable = true,
+  }
   require("nvim-treesitter.configs").setup {
-    ensure_installed = { "lua", "markdown", "markdown_inline", "bash", "python" }, -- put the language you want in this array
+    ensure_installed = { "lua", "markdown", "markdown_inline", "bash", "python", "vimdoc", "terraform" }, -- put the language you want in this array
     ignore_install = { "" },
     sync_install = false,
     highlight = {

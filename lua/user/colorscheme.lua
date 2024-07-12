@@ -2,7 +2,7 @@ local M = {
   "catppuccin/nvim",
   lazy = false, -- make sure we load this during startup if it is your main colorscheme
   priority = 1000, -- make sure to load this before all the other start plugins
-  commit = "18267654c665310c665d3b7c6bc43d5f5ea5e410",
+  -- commit = "18267654c665310c665d3b7c6bc43d5f5ea5e410",
 }
 
 local function isMacOS()

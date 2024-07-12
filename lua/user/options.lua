@@ -40,6 +40,7 @@ vim.opt.title = false
 -- colorcolumn = "80",
 -- colorcolumn = "120",
 vim.opt.fillchars = vim.opt.fillchars + "eob: "
+vim.g.skip_ts_context_commentstring_module = true
 vim.opt.fillchars:append {
   stl = " ",
 }
@@ -51,3 +52,16 @@ vim.cmd [[set iskeyword+=-]]
 
 vim.g.netrw_banner = 0
 vim.g.netrw_mouse = 2
+
+-- forces the use of OSC 52 escape sequences for all clipboard operations. Please disable if your terminal does not support this feature or you are using neovim < v10.0.
+--vim.g.clipboard = {
+--  name = 'OSC 52',
+--  copy = {
+--    ['+'] = require('vim.ui.clipboard.osc52').copy('+'),
+--    ['*'] = require('vim.ui.clipboard.osc52').copy('*'),
+--  },
+--  paste = {
+--    ['+'] = require('vim.ui.clipboard.osc52').paste('+'),
+--    ['*'] = require('vim.ui.clipboard.osc52').paste('*'),
+--  },
+--}

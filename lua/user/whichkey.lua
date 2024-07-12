@@ -1,7 +1,7 @@
 local M = {
   "folke/which-key.nvim",
   event = "VeryLazy",
-  commit = "ce741eb559c924d72e3a67d2189ad3771a231414",
+  commit = "0539da005b98b02cf730c1d9da82b8e8edb1c2d2",
 }
 
 function M.config()
@@ -14,6 +14,13 @@ function M.config()
       name = "Buffers",
       b = { "<cmd>Telescope buffers previewer=false<cr>", "Find" },
       x = { "<cmd>BufferClose<cr>", "Close buffer" },
+      m = {
+        name = "Move",
+        h = { "<cmd>BufferMovePrevious<cr>", "Move Left" },
+        l = { "<cmd>BufferMoveNext<cr>", "Move Right" },
+        s = { "<cmd>BufferMoveStart<cr>", "Move Start" },
+        e = { "<cmd>BufferMoveEnd<cr>", "Move End" },
+      }
     },
     d = {
       name = "Debug",
@@ -138,7 +145,7 @@ function M.config()
     },
     x = {
       name = "Terminal",
-      x = { "<cmd>ToggleTerm<CR>", "New terminal (default)" },
+      x = { "<cmd>ToggleTerm direction=float<CR>", "New terminal (default)" },
       h = { "<cmd>ToggleTerm direction=horizontal<CR>", "Horizontal terminal" },
       v = { "<cmd>ToggleTerm direction=vertical<CR>", "Vertiacal terminal (Unusable for now)" },
     },
