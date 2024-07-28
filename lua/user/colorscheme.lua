@@ -75,7 +75,7 @@ function M.config()
   if theme:match("Dark") then
   vim.cmd.colorscheme "catppuccin-mocha"
   else
-    vim.cmd.colorscheme "catppuccin-latte"
+    vim.cmd.colorscheme "catppuccin-mocha"
   end
 end
 
