@@ -6,7 +6,7 @@ local M = {
 M.config = function()
   require("copilot").setup({
     panel = {
-      enabled = true,
+      enabled = false,
       auto_refresh = false,
       keymap = {
         jump_prev = "[[",
@@ -21,11 +21,11 @@ M.config = function()
       },
     },
     suggestion = {
-      enabled = true,
+      enabled = false,
       auto_trigger = true,
       debounce = 75,
       keymap = {
-        accept = "<Tab>",
+        accept = "<M-l>",
         accept_word = false,
         accept_line = false,
         next = "<M-]>",

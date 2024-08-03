@@ -34,6 +34,9 @@ local M = {
       },
     },
     {
+      "zbirenbaum/copilot-cmp"
+    },
+    {
       "hrsh7th/cmp-nvim-lua",
     },
   },
@@ -42,9 +45,12 @@ local M = {
 function M.config()
   local cmp = require "cmp"
   local luasnip = require "luasnip"
+
+  local lspkind = require("lspkind")
+  
   require("luasnip/loaders/from_vscode").lazy_load()
 
-  vim.api.nvim_set_hl(0, "CmpItemKindCopilot", { fg = "#6CC644" })
+  vim.api.nvim_set_hl(0, "CmpItemKindCopilot", { fg = "#CA42F0" })
   vim.api.nvim_set_hl(0, "CmpItemKindTabnine", { fg = "#CA42F0" })
   vim.api.nvim_set_hl(0, "CmpItemKindEmoji", { fg = "#FDE030" })
 
@@ -61,6 +67,15 @@ function M.config()
         luasnip.lsp_expand(args.body) -- For `luasnip` users.
       end,
     },
+    formatting = {
+      expandable_indicator = true,
+      format = lspkind.cmp_format({
+        mode = 'symbol',
+        maxwidth = 50,
+      ellipsis_char = '...',
+      show_labelDetails = true,
+    })
+  },
     mapping = cmp.mapping.preset.insert {
       ["<C-k>"] = cmp.mapping(cmp.mapping.select_prev_item(), { "i", "c" }),
       ["<C-j>"] = cmp.mapping(cmp.mapping.select_next_item(), { "i", "c" }),
@@ -107,34 +122,35 @@ function M.config()
         "s",
       }),
     },
-    formatting = {
-      fields = { "kind", "abbr", "menu" },
-      format = function(entry, vim_item)
-        vim_item.kind = icons.kind[vim_item.kind]
-        vim_item.menu = ({
-          nvim_lsp = "",
-          nvim_lua = "",
-          luasnip = "",
-          buffer = "",
-          path = "",
-          emoji = "",
-        })[entry.source.name]
+    --formatting = {
+    --  fields = { "kind", "abbr", "menu" },
+    --  format = function(entry, vim_item)
+    --    vim_item.kind = icons.kind[vim_item.kind]
+    --    vim_item.menu = ({
+    --      nvim_lsp = "",
+    --      nvim_lua = "",
+    --      luasnip = "",
+    --      buffer = "",
+    --      path = "",
+    --      emoji = "",
+    --    })[entry.source.name]
 
-        if entry.source.name == "emoji" then
-          vim_item.kind = icons.misc.Smiley
-          vim_item.kind_hl_group = "CmpItemKindEmoji"
-        end
+    --    if entry.source.name == "emoji" then
+    --      vim_item.kind = icons.misc.Smiley
+    --      vim_item.kind_hl_group = "CmpItemKindEmoji"
+    --    end
 
-        if entry.source.name == "cmp_tabnine" then
-          vim_item.kind = icons.misc.Robot
-          vim_item.kind_hl_group = "CmpItemKindTabnine"
-        end
+    --    if entry.source.name == "cmp_tabnine" then
+    --      vim_item.kind = icons.misc.Robot
+    --      vim_item.kind_hl_group = "CmpItemKindTabnine"
+    --    end
 
-        return vim_item
-      end,
-    },
+    --    return vim_item
+    --  end,
+    --},
+
     sources = {
-      { name = "copilot" },
+      { name = "copilot", group_index = 2 },
       { name = "nvim_lsp" },
       { name = "luasnip" },
       { name = "cmp_tabnine" },
