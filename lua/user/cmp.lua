@@ -47,7 +47,7 @@ function M.config()
   local luasnip = require "luasnip"
 
   local lspkind = require("lspkind")
-  
+
   require("luasnip/loaders/from_vscode").lazy_load()
 
   vim.api.nvim_set_hl(0, "CmpItemKindCopilot", { fg = "#CA42F0" })
@@ -153,7 +153,7 @@ function M.config()
       { name = "copilot", group_index = 2 },
       { name = "nvim_lsp" },
       { name = "luasnip" },
-      { name = "cmp_tabnine" },
+      --{ name = "cmp_tabnine" },
       { name = "nvim_lua" },
       { name = "buffer" },
       { name = "path" },
@@ -174,9 +174,10 @@ function M.config()
       },
     },
     experimental = {
-      ghost_text = false,
+      ghost_text = true,
     },
   }
 end
 
 return M
+

@@ -1,7 +1,7 @@
 local M = {
   "romgrk/barbar.nvim",
   event = "BufEnter",
-  commit = "dd852401ee902745b67fc09a83d113b3fe82a96f",
+  --commit = "dd852401ee902745b67fc09a83d113b3fe82a96f",
 }
 M.config = function()
   require("barbar").setup {
