@@ -4,6 +4,16 @@ local M = {
   commit = "234822140b265ec4ba3203e3e0be0e0bb826dff5",
 }
 
+
+-- Check current neovim path
+local CONFIG_PATH
+  if vim.loop.os_uname().sysname == "Windows_NT" then
+    CONFIG_PATH = "~\\AppData\\Local\\nvim\\init.lua"
+  else
+    CONFIG_PATH = "~/.config/nvim/init.lua"
+  end
+
+
 function M.config()
   local dashboard = require "alpha.themes.dashboard"
   local icons = require "user.icons"
@@ -46,7 +56,7 @@ function M.config()
     button("p", icons.git.Repo .. " Find project", ":lua require('telescope').extensions.projects.projects()<CR>"),
     button("r", icons.ui.History .. " Recent files", ":Telescope oldfiles <CR>"),
     button("t", icons.ui.Text .. " Find text", ":Telescope live_grep <CR>"),
-    button("c", icons.ui.Gear .. " Config", ":e ~/.config/nvim/init.lua <CR>"),
+    button("c", icons.ui.Gear .. " Config", ":e " .. CONFIG_PATH .. " <CR>"),
     button("q", icons.ui.SignOut .. " Quit", ":qa<CR>"),
   }
   local function footer()
