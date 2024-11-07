@@ -35,7 +35,26 @@ vim.opt.signcolumn = "yes" -- always show the sign column, otherwise it would sh
 vim.opt.wrap = false -- display lines as one long line
 vim.opt.scrolloff = 0
 vim.opt.sidescrolloff = 8
-vim.opt.guifont = "JetBrainsMono Nerd Font:h12" -- the font used in graphical neovim applications
+
+-- The font used in graphical Neovim applications
+local guifontsize = 10
+local guifont = "JetBrainsMono Nerd Font"
+
+vim.opt.guifont = guifont .. ":h" .. guifontsize
+
+function AdjustFontSize(amount)
+  guifontsize = guifontsize + amount
+  vim.opt.guifont = guifont .. ":h" .. guifontsize
+end
+
+-- Keybindings for adjusting font size with Ctrl/Cmd + and Ctrl/Cmd -
+vim.keymap.set("n", "<C-+>", function() AdjustFontSize(1) end, { noremap = true, silent = true })
+vim.keymap.set("n", "<C-->", function() AdjustFontSize(-1) end, { noremap = true, silent = true })
+vim.keymap.set("n", "<D-+>", function() AdjustFontSize(1) end, { noremap = true, silent = true })
+vim.keymap.set("n", "<D-->", function() AdjustFontSize(-1) end, { noremap = true, silent = true })
+
+--
+
 vim.opt.title = false
 -- colorcolumn = "80",
 -- colorcolumn = "120",
